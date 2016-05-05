@@ -1,0 +1,148 @@
+---
+layout: docs
+---
+<style type="text/css">
+.alert{
+    background-color: #dff0d8;
+    margin: 0 0 10px;
+    padding: 15px;
+    border-radius: 4px;
+    text-align: center;
+}
+h1.doc{
+  margin-bottom: 20px;
+}
+h2.doc{
+    margin: 20px 0 0;
+}
+.doc-heading{
+  margin-top: 30px;
+  background:#585858;
+  color:white;
+}
+.doc-heading div{
+    width: 100%;
+    max-width: 68em;
+    margin: 0 auto;
+    padding: 0 2.5em;
+}
+#main{
+  padding-bottom: 10px;
+}
+</style>
+<div class='doc-heading'>
+  <div>
+    <h1 class='doc'>{{ page.api }}</h1>
+  </div>
+</div>
+<!-- Main -->
+<div id="main">
+  <div class="inner">
+    <p class="alert">You can see pricing and an interactive version of this <a target="_blank" href="https://market.mashape.com/mazon/{{page.stub}}">documentation on Mashape</a>!</p>
+    <h2 class='doc'>Documentation</h2>
+    This page is going to walk you through how to get your app or site set up with Mazon IO's {{ page.api }}. This page will show some very basic integrations with .NET, Objective-C, Python, PHP, Ruby, and Node, but the API is language and framework agnostic: it returns JSON, so any programming environment with a JSON library can use the {{ page.api }}. This page assumes you've created a Mashape account and have subscribed to our api and thereby have an API key to make requests. 
+    <br><br>
+    So <strong>step 1</strong> is to go and subscribe to our api:<br>
+    <a href="https://www.mashape.com/mazon/{{page.stub}}?&amp;utm_campaign=mashape5-embed&amp;utm_medium=button&amp;utm_source={{page.stub}}&amp;utm_content=anchorlink&amp;utm_term=icon-light"><img src="https://d1g84eaw0qjo7s.cloudfront.net/images/badges/badge-icon-light-9e8eba63.png" width="143" height="38" alt="Mashape"></a>
+    <br><br>
+    <strong>Below are some examples to get you started:</strong>
+    <br>
+    <ul class="examples">
+      <li><a href="#simple">Simple CURL Request</a></li>
+      <li><a href="#dotnet">.NET</a></li>
+      <li><a href="#python">Python</a></li>
+      <li><a href="#objc">Objective-C</a></li>
+      <li><a href="#ruby">Ruby</a></li>
+      <li><a href="#node">NodeJS</a></li>
+      <li><a href="#node">Java</a></li>
+      <li><a href="#php">PHP</a></li>
+    </ul>
+    </p>
+    <hr>
+    <strong id="simple">Making your first request</strong><br>
+    Making a request with the {{page.api}} is pretty simple. Here is a sample curl request via the Unix command line:<br>
+    <pre><code>curl --get --include 'https://{{page.api-url}}{ip_address}' \
+  -H 'X-Mashape-Key: {your_mashape_key}' \
+  -H 'Accept: application/json'</code></pre>
+    That should return a JSON object that depending on the fields you have selected looks something like this:
+    <pre><code>{{ content }}</code></pre>
+    Simple.
+    <hr>
+    <strong id="dotnet">Calling the API using .NET</strong><br>
+    <p></p>
+    <pre><code>// These code snippets use an open-source library. http://unirest.io/net
+Task&lt;HttpResponse&lt;MyClass&gt;&gt; response = Unirest.get("https://{{page.api-url}}{ip_address}")
+.header("X-Mashape-Key", "{your_mashape_key}")
+.header("Accept", "application/json")
+.asJson();</code></pre>
+    <p></p>
+    <hr>
+    <strong id="python">Calling the API using Python</strong><br>
+    <p>Doing some data analysis on your userbase? Below is a snippet of python code calling the api. You could also use urllib2 or requests, but unirest gives us a common interface across multiple languages to build these example calls.</p>
+    <pre><code># These code snippets use an open-source library. http://unirest.io/python
+response = unirest.get("https://{{page.api-url}}{ip_address}",
+  headers={
+    "X-Mashape-Key": "{your_mashape_key}",
+    "Accept": "application/json"
+  }
+)</code></pre>
+    <p></p>
+    <hr>
+    <strong id="objc">Calling the API using Objective-C</strong><br>
+    <p>Building an iPhone app? Below is a snippet to get you started.</p>
+    <pre><code>// These code snippets use an open-source library. http://unirest.io/objective-c
+NSDictionary *headers = @{@"X-Mashape-Key": @"{your_mashape_key}", @"Accept": @"application/json"};
+UNIUrlConnection *asyncConnection = [[UNIRest get:^(UNISimpleRequest *request) {
+  [request setUrl:@"https://{{page.api-url}}{ip_address}"];
+  [request setHeaders:headers];
+}] asJsonAsync:^(UNIHTTPJsonResponse *response, NSError *error) {
+  NSInteger code = response.code;
+  NSDictionary *responseHeaders = response.headers;
+  UNIJsonNode *body = response.body;
+  NSData *rawBody = response.rawBody;
+}];</code></pre>
+    <p></p>
+    <hr>
+    <strong id="ruby">Calling the API using Ruby</strong><br>
+    <p></p>
+    <pre><code># These code snippets use an open-source library. http://unirest.io/ruby
+response = Unirest.get "https://{{page.api-url}}{ip_address}",
+  headers:{
+    "X-Mashape-Key" => "{your_mashape_key}",
+    "Accept" => "application/json"
+  }</code></pre>
+    <p></p>
+    <hr>
+    <strong id="node">Calling the API using NodeJS</strong><br>
+    <pre><code>// These code snippets use an open-source library. http://unirest.io/nodejs
+unirest.get("https://{{page.api-url}}{ip_address}")
+.header("X-Mashape-Key", "{your_mashape_key}")
+.header("Accept", "application/json")
+.end(function (result) {
+  console.log(result.status, result.headers, result.body);
+});</code></pre>
+<p></p>
+    <hr>
+    <strong id="java">Calling the API using Java</strong><br>
+    <p></p>
+    <pre><code>// These code snippets use an open-source library. http://unirest.io/java
+HttpResponse&lt;JsonNode&gt; response = Unirest.get("https://{{page.api-url}}{ip_address}")
+.header("X-Mashape-Key", "{your_mashape_key}")
+.header("Accept", "application/json")
+.asJson();
+</code></pre>
+<p></p>
+    <hr>
+    <strong id="php">Calling the API using PHP</strong><br>
+<p></p>
+    <pre><code>// These code snippets use an open-source library. http://unirest.io/php
+$response = Unirest\Request::get("https://{{page.api-url}}{ip_address}",
+  array(
+    "X-Mashape-Key" => "{your_mashape_key}",
+    "Accept" => "application/json"
+  )
+);
+</code></pre>
+<p></p>
+  </div>
+</div>

@@ -1,38 +1,26 @@
-<footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title }}</h2>
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="contact-list">
-          <li>{{ site.title }}</li>
-          <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+<!-- Footer -->
+  <footer id="footer">
+    <div class="inner">
+      <section>
+        <h2>Get in touch</h2>
+        <p style="font-size:28px;"><a href="mailto:support@mazon.io">support@mazon.io</a></p>
+      </section>
+      <section>
+        <h2>Follow</h2>
+        <ul class="icons">
+          <li><a target="_blank" href="http://twitter.com/mazon_io" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a target="_blank" href="http://github.com/mazonio" class="icon style2 fa-github"><span class="label">GitHub</span></a></li>
+          <li><a target="_blank" href="mailto:support@mazon.io" class="icon style2 fa-envelope-o"><span class="label">Email</span></a></li>
         </ul>
-      </div>
-
-      <div class="footer-col footer-col-2">
-        <ul class="social-media-list">
-          {% if site.github_username %}
-          <li>
-            {% include icon-github.html username=site.github_username %}
-          </li>
-          {% endif %}
-
-          {% if site.twitter_username %}
-          <li>
-            {% include icon-twitter.html username=site.twitter_username %}
-          </li>
-          {% endif %}
-        </ul>
-      </div>
-
-      <div class="footer-col footer-col-3">
-        <p>{{ site.description }}</p>
-      </div>
+      </section>
+      <ul class="copyright">
+        <li>&copy; Mazon/IO. All rights reserved</li>
+      </ul>
     </div>
-
-  </div>
-
-</footer>
+  </footer>
+<!-- Scripts -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/skel.min.js"></script>
+<script src="/assets/js/util.js"></script>
+<!--[if lte IE 8]><script src="/assets/js/ie/respond.min.js"></script><![endif]-->
+<script src="/assets/js/main.js"></script>
